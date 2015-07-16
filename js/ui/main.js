@@ -8,7 +8,7 @@ define(['jquery', 'dialog', 'getUI'], function($, Dialog, GetUI){
             this.oContextmenu = $('.e-contextmenu');
             this.fixTools = $('.e-fix-tools');
 
-            this.showLayout();
+            // this.showLayout();
             this.widgetsOperate();
             this.menuAni();
             this.resizeRender();
@@ -449,7 +449,13 @@ define(['jquery', 'dialog', 'getUI'], function($, Dialog, GetUI){
                     return $(window).height();
                 },
                 oCon = $('.e-containter'),
-                oView = oCon.find('.e-view');
+                oView = oCon.find('.e-view'),
+                oWidget = oCon.find('.e-widget'),
+                btnSwitch = oWidget.find('.e-widget-switch');
+
+            btnSwitch.click(function(){
+
+            });
 
             setSize();
             function setSize(){
