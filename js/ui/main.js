@@ -12,7 +12,7 @@ define(['jquery', 'dialog', 'getUI'], function($, Dialog, GetUI){
             this.oContextmenu = $('.e-contextmenu');
             this.fixTools = $('.e-fix-tools');
 
-            // this.showLayout();
+            this.showLayout();
             this.widgetsOperate();
             this.menuAni();
             this.resizeRender();
