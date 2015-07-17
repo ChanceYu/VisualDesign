@@ -38,7 +38,6 @@ a{text-decoration: none;}
 .e-widget-switch-hide .e-view{ margin-left: 0;}
 .e-widget-switch-hide-view .e-view{ margin-left: 0;}
 
-.e-widget-group{}
 .e-widget-group .group-title{display: block; padding-left:20px; height: 40px; line-height: 40px; color: #000; background-color: #ccc; font-size: 14px; font-weight: bold;}
 .e-widget-group .group-title:hover{background-color: #333; color: #fff;}
 .e-widget-group .group-title i{margin-right: 10px; font-size: 18px; vertical-align: middle; position: relative; top: -2px;}
