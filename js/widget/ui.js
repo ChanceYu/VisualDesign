@@ -11,7 +11,8 @@ define(function(){
 		'ui-table': '<table class="ui-table" cellpadding="0" cellspacing="0" contenteditable="true"><tr><th>序号</th><th>姓名</th><th>性别</th><th>年龄</th></tr><tr><td>1.</td><td>张三</td><td>男</td><td>26</td></tr><tr><td>2.</td><td>李四</td><td>男</td><td>21</td></tr><tr><td>3.</td><td>小爱</td><td>女</td><td>19</td></tr><tr><td>4.</td><td>小米</td><td>女</td><td>18</td></tr></table>',
 		'ui-button': '<button class="ui-button" contenteditable="true"><i class="icon-star"></i>按钮</button>',
 		'ui-text': '<input class="ui-text" type="text" contenteditable="true" />',
-		'ui-textarea': '<textarea class="ui-textarea" contenteditable="true"></textarea>'
+		'ui-textarea': '<textarea class="ui-textarea" contenteditable="true"></textarea>',
+		'ui-tab': '<div class="ui-tab"><div class="ui-tab-title"><button class="ui-tab-btn active">选项一</button><button class="ui-tab-btn">选项二</button></div><div class="ui-tab-content"><div class="ui-tab-item active">内容一</div><div class="ui-tab-item">内容二</div></div></div>'
 	}
 
 	var getUI = function(uiName, mewTpl){
