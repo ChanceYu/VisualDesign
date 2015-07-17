@@ -65,10 +65,10 @@
 .ui-text{padding: 4px 6px; border: 1px solid #ccc; -webkit-border-radius: 4px;-moz-border-radius: 4px;-ms-border-radius: 4px;-o-border-radius: 4px;border-radius: 4px;}
 .ui-textarea{padding: 10px; border: 1px solid #ccc; -webkit-border-radius: 4px;-moz-border-radius: 4px;-ms-border-radius: 4px;-o-border-radius: 4px;border-radius: 4px;}
 
-.ui-tab{margin: 100px;}
-.ui-tab .ui-tab-title{-webkit-border-radius: 4px;-moz-border-radius: 4px;-ms-border-radius: 4px;-o-border-radius: 4px;border-radius: 4px; overflow: hidden; display: inline-block;}
-.ui-tab .ui-tab-btn{float:left; border: 1px solid #ccc;padding: 4px 14px; font-size: 14px; background:#fff;}
-.ui-tab .ui-tab-content{position: relative; border: 1px solid #eee;}
+.ui-tab{}
+.ui-tab .ui-tab-title{-webkit-border-radius: 4px;-moz-border-radius: 4px;-ms-border-radius: 4px;-o-border-radius: 4px;border-radius: 4px; overflow: hidden; text-align: left;}
+.ui-tab .ui-tab-btn{border: 1px solid #ccc;padding: 4px 14px; font-size: 14px; background:#fff;}
+.ui-tab .ui-tab-content{position: relative; width: 100%; min-height: 50px; border: 1px solid #eee;}
 .ui-tab .ui-tab-item{position: absolute; left: 0; top: 0; display: none;}
 .ui-tab .ui-tab-btn.active{background: none #2589D6; border: 1px solid #2589D6; color: #fff;}
 .ui-tab .ui-tab-item.active{display: block;}
