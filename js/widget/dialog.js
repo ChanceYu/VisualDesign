@@ -1,3 +1,7 @@
+/*
+ * User: ShareYu
+ * Date: 2015/7/9
+ */
 define(['jquery', 'getUI'], function($, GetUI){
 	var dialog = function(options, newTpl){
 		this.UI = GetUI('ui-dialog', newTpl);
