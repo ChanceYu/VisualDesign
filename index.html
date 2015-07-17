@@ -14,7 +14,6 @@
 				domReady(function(){
 	                require(['css!cssPath/animate', 'css!cssPath/awesome']);
 					UI.init();
-					var widget = $('.e-widget');
 				});
 			});
 		})();
@@ -25,7 +24,7 @@
 		<a class="e-top-logo" href="javascript:void(0)"><img src="img/icon-logo.png" />老师在线</a>
 		<div class="e-top-tools">
 			<button class="ui-button btn-tool-download"><i class="icon-cloud-download"></i>下载</button>
-			<button class="ui-button"><i class="icon-eye-open"></i>预览</button>
+			<button class="ui-button btn-tool-preview"><i class="icon-eye-open"></i>预览</button>
 			<button class="ui-button btn-tool-relayout"><i class="icon-th"></i>重新选择布局</button>
 		</div>
 		<div class="e-fix-tools">
@@ -40,8 +39,8 @@
 		</div>
 	</div>
 	<div class="e-containter">
+        <button class="e-widget-switch-btn"><i class="icon-chevron-left"></i></button>
 		<div class="e-widget">
-			<button class="e-widget-switch"><i class="icon-chevron-left"></i></button>
 			<div class="e-widget-group">
 				<a class="group-title" href="javascript:void(0)"><i class="icon-double-angle-right"></i>基本CSS</a>
 				<div class="group-content">
@@ -83,12 +82,8 @@
 			<div class="e-widget-group">
 				<a class="group-title" href="javascript:void(0)"><i class="icon-double-angle-right"></i>组件</a>
 				<div class="group-content">
-					<div class="e-widget-item">
-						<span>下拉菜单</span>
-						<button class="ui-button-drag"><i class="icon-move"></i>拖动</button>
-					</div>
-					<div class="e-widget-item">
-						<span>图片轮播</span>
+					<div class="e-widget-item" data-ui="ui-tab">
+						<span>选项卡</span>
 						<button class="ui-button-drag"><i class="icon-move"></i>拖动</button>
 					</div>
 				</div>
@@ -96,7 +91,16 @@
 		</div>
 		<div class="e-view">
 			<div class="e-view-wrapper">
-				
+				<div class="ui-tab">
+					<div class="ui-tab-title">
+						<button class="ui-tab-btn active">选项一</button>
+						<button class="ui-tab-btn">选项二</button>
+					</div>
+					<div class="ui-tab-content">
+						<div class="ui-tab-item active">内容一</div>
+						<div class="ui-tab-item">内容二</div>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
