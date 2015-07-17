@@ -1,3 +1,7 @@
+/*
+ * User: ShareYu
+ * Date: 2015/7/9
+ */
 define(['jquery', 'dialog', 'getUI'], function($, Dialog, GetUI){
     var mainUI = {
         init: function(){
@@ -8,11 +12,12 @@ define(['jquery', 'dialog', 'getUI'], function($, Dialog, GetUI){
             this.oContextmenu = $('.e-contextmenu');
             this.fixTools = $('.e-fix-tools');
 
-            this.showLayout();
+            // this.showLayout();
             this.widgetsOperate();
             this.menuAni();
             this.resizeRender();
             this.slideOperate();
+            this.topToolsOperate();
         },
         /* 布局列表 */
         showLayout: function(){
@@ -30,12 +35,6 @@ define(['jquery', 'dialog', 'getUI'], function($, Dialog, GetUI){
                 html: (function(){
                    return _this.previewLayout();
                 }())
-            });
-
-            /* 重新布局按钮 */
-            $('.e-top-tools .btn-tool-relayout').click(function(){
-                _this.layOutDialog.show();
-                _this.layOutDialog.UI.find('.icon-remove').show();
             });
         },
         /* 布局预览 */
@@ -62,10 +61,10 @@ define(['jquery', 'dialog', 'getUI'], function($, Dialog, GetUI){
 
                 for(var m = 0, n = layOutMap[i].length; m < n; m++){
                     var arr = layOutMap[i][m].split(':'),
-                        row = $('<div class="ui-row"></div>');
+                        row = $('<div class="ui-row ui-row-edit"></div>');
 
                     for(var a = 0, b = arr.length; a < b; a++){
-                        row.append('<div class="ui-column ui-column-'+ arr[0] +'" style="background:'+ randomColor() +'"></div>');
+                        row.append('<div class="ui-column ui-column-edit ui-column-'+ arr[0] +'" style="background:'+ randomColor() +'"></div>');
                     }
 
                     row.appendTo(layoutHTML);
@@ -204,7 +203,7 @@ define(['jquery', 'dialog', 'getUI'], function($, Dialog, GetUI){
                         return iNum;
                     }());
 
-                var oCol = $('<div class="ui-column ui-column-' + iCell + '" style="background:#ddd"></div>').unbind('click contextmenu');
+                var oCol = $('<div class="ui-column ui-column-edit ui-column-' + iCell + '" style="background:#ddd"></div>').unbind('click contextmenu');
 
                 thatRow.find('.active').replaceWith(oCol);
                 _this.oContextmenu.hide();
@@ -273,10 +272,10 @@ define(['jquery', 'dialog', 'getUI'], function($, Dialog, GetUI){
 
                         for(var i = 0; i < iValue; i++){
                             if(html){
-                                html.after('<div class="ui-column ui-column-' + iOffset + '"  style="background:' + _this.randomColor() + '"></div>');
+                                html.after('<div class="ui-column ui-column-edit ui-column-' + iOffset + '"  style="background:' + _this.randomColor() + '"></div>');
                             }
                             else{
-                                html = $('<div class="ui-column ui-column-' + iOffset + '"  style="background:' + _this.randomColor() + '"></div>');
+                                html = $('<div class="ui-column ui-column-edit ui-column-' + iOffset + '"  style="background:' + _this.randomColor() + '"></div>');
                             }
                         }
 
@@ -289,6 +288,43 @@ define(['jquery', 'dialog', 'getUI'], function($, Dialog, GetUI){
                     }
                 }, true);
             }
+        },
+        /* 顶部工具按钮操作 */
+        topToolsOperate: function(){
+            var _this = this,
+                viewWrapper = $('.e-view'),
+                tools = $('.e-top-tools'),
+                btnDownload = tools.find('.btn-tool-download'),
+                btnPreview = tools.find('.btn-tool-preview'),
+                btnRelayout = tools.find('.btn-tool-relayout');
+
+            btnRelayout.click(function(){
+                _this.layOutDialog.show();
+                _this.layOutDialog.UI.find('.icon-remove').show();
+            });
+
+            btnPreview.click(function(){
+                var docHTML = (function(){
+                    var html = '<!DOCTYPE html><html>' + $('head')[0].outerHTML + '<body style="overflow:scroll">' + (function(){
+                        var con = $('.e-containter').clone().css({height: '100%', overflow: 'visible'}),
+                            view = con.find('.e-view-wrapper').html();
+
+                        con.html(view);
+                        con.find('.ui-row-edit,.ui-column-edit,[contenteditable]').removeClass('ui-row-edit ui-column-edit').removeAttr('contenteditable');
+
+                        return con[0].outerHTML;
+                    }()) + '</body></html>';
+
+                    return html;
+                }()),
+                doc = window.open('', '_blank');
+
+                doc.opener = null;
+                doc.document.open();
+                doc.document.write(docHTML);
+                doc.document.close();
+
+            });
         },
         /* 左边菜单操作 */
         widgetsOperate: function(){
@@ -451,17 +487,27 @@ define(['jquery', 'dialog', 'getUI'], function($, Dialog, GetUI){
                 oCon = $('.e-containter'),
                 oView = oCon.find('.e-view'),
                 oWidget = oCon.find('.e-widget'),
-                btnSwitch = oWidget.find('.e-widget-switch');
+                btnSwitch = oCon.find('.e-widget-switch-btn'),
+                icon = btnSwitch.find('i'),
+                bShow = true;
 
-            btnSwitch.click(function(){
-
+            btnSwitch.toggle(function(){
+                bShow = false;
+                icon.toggleClass('icon-chevron-left icon-chevron-right');
+                oCon.addClass('e-widget-switch-hide');
+                setSize();
+            },function(){
+                bShow = true;
+                icon.toggleClass('icon-chevron-left icon-chevron-right');
+                oCon.removeClass('e-widget-switch-hide');
+                setSize();
             });
 
             setSize();
             function setSize(){
                 oCon.css('height', h() - 80);
                 oView.css({
-                    width: w() - 240,
+                    width: bShow ? w() - 240 : w(),
                 });
             }
 
@@ -470,5 +516,6 @@ define(['jquery', 'dialog', 'getUI'], function($, Dialog, GetUI){
             });
         }
     };
+
    return mainUI;
 });
