@@ -44,8 +44,12 @@ require.config({
         domReady: 'lib/domReady',
         text: 'lib/text',
         css: 'lib/css',
-        dialog: 'widget/dialog',
+        common: 'ui/common',
         getUI: 'widget/ui',
+        dialog: 'widget/dialog',
+        tab: 'widget/tab',
+        carousel: 'widget/carousel',
+        accordion: 'widget/accordion',
         cssPath: '../style/css'
     },
     shim: {

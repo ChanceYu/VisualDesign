@@ -11,9 +11,9 @@ a{text-decoration: none;}
 .e-topbar .e-top-logo:hover{background: #2A2B2D;}
 .e-topbar .e-top-logo img{ vertical-align: middle; margin-right: 6px;}
 .e-topbar .e-top-tools button{margin-right: 10px;}
-.e-topbar .e-fix-tools{width: 80px; height: auto; background-color: #ccc; position: fixed; right: 10px; top: 200px; z-index: 10;}
-.e-topbar .e-fix-tools .btn-tool-edit{width: 74px; background-color: #0066CC; position: absolute; left: 0; top: 0;}
-.e-topbar .e-fix-tools .btn-tool-delete{width: 74px; background-color: #CC0033; position: absolute; left: 0; top: 30px;}
+.e-topbar .e-fix-tools{width: 200px; height: 30px; line-height: 30px; position: fixed; z-index: 10;}
+.e-topbar .e-fix-tools .btn-tool-edit{width: 74px; background-color: #0066CC; }
+.e-topbar .e-fix-tools .btn-tool-delete{width: 74px; background-color: #CC0033;}
 
 .e-contextmenu{position: fixed; z-index: 111; left: 200px; top: 200px; font-size: 12px; font-family: 'Microsoft YaHe', '微软雅黑'; display: none;}
 .e-contextmenu ul{padding: 2px; border: 1px solid #979797; box-shadow: rgba(0, 0, 0, 0.6) 2px 2px 2px; background-color: #f1f1f1;}

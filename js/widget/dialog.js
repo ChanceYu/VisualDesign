@@ -3,27 +3,11 @@
  * Date: 2015/7/9
  */
 define(['jquery', 'getUI'], function($, GetUI){
-	var dialog = function(options, newTpl){
+	var Dialog = function(options, newTpl){
 		this.UI = GetUI('ui-dialog', newTpl);
 		this.Mask = $('.ui-mask').length ? $('.ui-mask'): $('<div class="ui-mask"></div>').appendTo('body');
 
-		this.options = $.extend({
-            title: '信息提示',
-			html: '提示内容',
-			width: '400px',
-			height: '140px',
-			top: null,
-			left: null,
-			hideMask: true,
-			draggable: true,
-			onEnsure: null,
-			onCancel: null,
-			onClose: null,
-			onBeforeShow: null,
-			onBeforeHide: null,
-			onAfterHide: null,
-			closed: false
-		}, options);
+		this.options = $.extend({}, Dialog.defaults, options);
 
 		this.isValid = true;
 		
@@ -32,7 +16,25 @@ define(['jquery', 'getUI'], function($, GetUI){
 		return this;
 	}
 
-	dialog.prototype = {
+	Dialog.defaults = {
+        title: '信息提示',
+		html: '提示内容',
+		width: '400px',
+		height: '140px',
+		top: null,
+		left: null,
+		hideMask: true,
+		draggable: true,
+		onEnsure: null,
+		onCancel: null,
+		onClose: null,
+		onBeforeShow: null,
+		onBeforeHide: null,
+		onAfterHide: null,
+		closed: false
+	}
+
+	Dialog.prototype = {
 		init: function(){
 			var _this = this;
 
@@ -128,5 +130,5 @@ define(['jquery', 'getUI'], function($, GetUI){
 		}
 	}
 
-	return dialog;
+	return Dialog;
 });

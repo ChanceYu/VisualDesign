@@ -2,7 +2,7 @@
  * User: ShareYu
  * Date: 2015/7/9
  */
-define(['jquery', 'dialog', 'getUI'], function($, Dialog, GetUI){
+define(['jquery', 'dialog', 'getUI', 'require'], function($, Dialog, GetUI, require){
     var mainUI = {
         init: function(){
             this.$contentColumns = null;
@@ -111,7 +111,9 @@ define(['jquery', 'dialog', 'getUI'], function($, Dialog, GetUI){
                             },
                             onEnsure: function(){
                                 var aRow = this.UI.find('.ui-row').clone(),
-                                    aCol = aRow.find('.ui-column');
+                                    aCol = aRow.find('.ui-column').bind({'mouseleave': function(){
+                                        _this.fixTools.hide();
+                                    }});
 
                                 aCol.removeAttr('style').removeClass('active');
                                 _this.$contentColumns = aCol;
@@ -325,6 +327,17 @@ define(['jquery', 'dialog', 'getUI'], function($, Dialog, GetUI){
                 doc.document.close();
 
             });
+            btnDownload.click(function(){
+                new Dialog({
+                    html: '您确定要下载吗？',
+                    onEnsure: function(){
+                        _this.fnDownLoad && _this.fnDownLoad();
+                    },
+                    onAfterHide: function(){
+                        this.destroy();
+                    }
+                }, true);
+            });
         },
         /* 左边菜单操作 */
         widgetsOperate: function(){
@@ -379,7 +392,7 @@ define(['jquery', 'dialog', 'getUI'], function($, Dialog, GetUI){
                                         return ele;
                                     }());
 
-                                wgTmpl.clone().removeAttr('style').appendTo(appendTarget).bind({
+                                var widget = wgTmpl.clone().removeAttr('style').appendTo(appendTarget).bind({
                                     'mouseenter': function(){
                                         _this.$activeEditableElement = $(this);
 
@@ -390,6 +403,12 @@ define(['jquery', 'dialog', 'getUI'], function($, Dialog, GetUI){
                                     }
                                 });
                                 wgTmpl.remove();
+
+                                if(widget.attr('data-ui-js')){
+                                    require([widget.attr('data-ui-js')], function(WG){
+                                        new WG(widget);
+                                    });
+                                }
                             }
                             fire = false;
                             wgTmpl = null;
@@ -400,10 +419,11 @@ define(['jquery', 'dialog', 'getUI'], function($, Dialog, GetUI){
                 }
             });
         },
+        /* 编辑和删除操作 */
         slideOperate: function(){
             var _this = this,
                 viewWrapper = $('.e-view-wrapper'),
-                btnEdit = _this.fixTools.find('.btn-tool-edit')
+                btnEdit = _this.fixTools.find('.btn-tool-edit'),
                 btnDelete = _this.fixTools.find('.btn-tool-delete'),
                 editDialog = null,
                 deleteDialog = null;
