@@ -1,7 +1,3 @@
-/*
- * User: ShareYu
- * Date: 2015/7/9
- */
 define(['jquery'], function($){
 	var Tab = function(wrapper, options){
 		this.options = $.extend({}, Tab.defaults, options);

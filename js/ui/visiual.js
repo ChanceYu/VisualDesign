@@ -1,7 +1,3 @@
-/*
- * User: ShareYu
- * Date: 2015/7/9
- */
 define(['jquery', 'dialog', 'getUI', 'require'], function($, Dialog, GetUI, require){
     var mainUI = {
         init: function(){

@@ -1,7 +1,3 @@
-/*
- * User: ShareYu
- * Date: 2015/7/9
- */
 define(['jquery'], function($){
 	var UI = {
 		'ui-dialog': '<div class="ui-dialog"><div class="ui-dialog-header"><span class="ui-dialog-title"></span><i class="icon-remove" data-event="onClose"></i></div><div class="ui-dialog-body"></div><div class="ui-dialog-footer"><button class="ui-button" data-event="onEnsure"><i class="icon-ok-sign"></i>确定</button><button class="ui-button" data-event="onCancel"><i class="icon-remove-sign"></i>取消</button></div></div>',
